@@ -1,21 +1,94 @@
-# blog-api
-REST API for blog articles using Node.js, Express and MySQL
+# Blog API
 
 ## Description
-Présentation du projet.
+
+Blog API est une API REST développée avec Node.js, Express et MySQL.
+Elle permet de gérer des articles de blog avec les opérations CRUD (Create, Read, Delete).
+
+Cette API permet de :
+
+* créer un article
+* voir tous les articles
+* voir un article par ID
+* supprimer un article
+
+---
 
 ## Technologies utilisées
-Node.js
-Express
-MySQL
+
+* Node.js
+* Express.js
+* MySQL
+* MySQL Workbench
+* Postman
+
+---
 
 ## Installation
-Instructions pour lancer le projet.
 
-## API Endpoints
-# Create Articles
+### 1. Cloner le projet
+
+```bash
+git clone https://github.com/UlrichBryan/blog-api.git
+```
+
+### 2. Aller dans le dossier
+
+```bash
+cd blog-api
+```
+
+### 3. Installer les dépendances
+
+```bash
+npm install
+```
+
+### 4. Configurer la base de données MySQL
+
+Créer une base de données :
+
+```sql
+CREATE DATABASE blog_api;
+```
+
+Créer la table :
+
+```sql
+CREATE TABLE articles (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ titre VARCHAR(255) NOT NULL,
+ contenu TEXT NOT NULL,
+ auteur VARCHAR(100) NOT NULL,
+ categorie VARCHAR(100),
+ tags VARCHAR(255),
+ date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### 5. Lancer le serveur
+
+```bash
+node app.js
+```
+
+Le serveur démarre sur :
+
+```
+http://localhost:3000
+```
+
+---
+
+# API Endpoints
+
+## Créer un article
+
 POST /api/articles
-Body
+
+Body JSON :
+
+```json
 {
  "titre": "Node.js API",
  "contenu": "Learning backend development",
@@ -23,44 +96,85 @@ Body
  "categorie": "Tech",
  "tags": "node,api"
 }
+```
 
-# GET All Articles
+---
+
+## Voir tous les articles
+
 GET /api/articles
 
-# Get Articles By ID
+---
+
+## Voir un article par ID
+
 GET /api/articles/:id
 
-# Delete Articles
+---
+
+## Supprimer un article
+
 DELETE /api/articles/:id
 
-## PARTIE 3 : Analyse critique de CleeRoute
-### Points forts
+---
 
-CleeRoute permet d'organiser les routes d'une API de manière claire et structurée. 
-Il facilite la gestion des endpoints et améliore la lisibilité du code.
+# Structure du projet
+
+```
+blog-api
+│
+├── app.js
+├── package.json
+├── README.md
+│
+├── config
+│   └── db.js
+│
+├── controllers
+│   └── articleController.js
+│
+├── routes
+│   └── articleRoutes.js
+```
+
+---
+
+# PARTIE 3 : Analyse critique de CleeRoute
+
+## Points forts
+
+CleeRoute permet d’organiser les routes d’une API de manière claire et structurée.
+Il améliore la lisibilité du code et facilite la gestion des endpoints.
 
 Avantages :
-- organisation claire des routes
-- meilleure maintenance du projet
-- réduction de la duplication du code
 
-### Points faibles
+* organisation claire des routes
+* meilleure structure du projet
+* réduction de la duplication du code
+
+## Points faibles
+
 Malgré ses avantages, CleeRoute présente certaines limites :
 
-- documentation limitée
-- moins populaire que d'autres outils
-- peu de tutoriels disponibles
+* documentation limitée
+* communauté encore réduite
+* peu de tutoriels disponibles
 
-### Améliorations possibles
-Pour améliorer cet outil, on pourrait :
+## Améliorations possibles
 
-- ajouter plus de documentation
-- fournir plus d'exemples pratiques
-- améliorer l'intégration avec les frameworks populaires
+Pour améliorer cet outil, il serait utile de :
 
-### Utilité pour un étudiant en informatique
-Pour un étudiant en informatique, CleeRoute permet de comprendre la structure des routes dans une API REST. 
-Il aide également à organiser un projet backend de manière plus professionnelle.
+* proposer plus de documentation
+* ajouter des exemples de projets
+* améliorer l’intégration avec les frameworks populaires
 
-## Auteur
-UlrichBryan
+## Utilité pour un étudiant en informatique
+
+Pour un étudiant en informatique, CleeRoute permet de mieux comprendre la gestion des routes dans une API REST.
+Il aide également à apprendre les bonnes pratiques de structuration d’un projet backend.
+
+---
+
+# Auteur
+
+Ulrich Bryan
